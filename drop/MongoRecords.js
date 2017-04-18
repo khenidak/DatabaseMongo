@@ -4,14 +4,15 @@ while (conn === undefined)
     try
     {
         conn = new Mongo("localhost:27017");
+        if (conn == undefined){
+          sleep(100);
+        }
     }
     catch (e)
     {
         print(e);
     }
-
-    sleep(100);
-}
+};
 
 db = conn.getDB("ordering");
 db.catalog.insert(
